@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Start documentation header comment
+
+PowerMILL Setup Sheets: default template for Summary Setup Sheet
+
+============================================================================
+Copyright 2003 Delcam plc., Birmingham, UK
+============================================================================
+
+History.
+DICC  Who When     What
+===== === ======== =========================================================
+48928 DKW 02/12/03 Written. A dummy, to be replaced by a real one.
+48907 DKW 04/12/03 Simplified.
+50716 DKW 14/04/04 Tabular summaries of toolpaths added.
+51039 DKW 05/05/04 Rewritten. Copied from Visual Basic setup sheets utility.
+51186 DKW 26/05/04 SUMMARY processing corrected. link removed because
+                   no longer needed.
+51430 MH  01/05/04 Fix comment line and add spaces
+51750 DKW 29/06/04 <title> content corrected.
+55767 SPD 26/04/05 Tidy HTML and use style sheet. Based on work done by AW.
+55886 SPD 28/04/05 Use a4page class. Other minor changes.
+55941 SPD 09/05/05 Changes, to improve the appearance of printed output.
+56041 SPD 13/05/05 Fixed some case errors in variable name strings.
+56285 SPD 02/06/05 Added VML stuff for tool image.
+56650 SPD 27/06/05 Use new parameter scheme wherever possible.
+56775 SPD 05/07/05 Changed logo image.
+56844 SPD 11/07/05 Modified the layout of the summary table.
+58321 SPD 27/10/05 Use lower case for the summaryrow tag.
+58636 SPD 30/11/05 Added the global folder to the CSS URL specification.
+59245 SPD 09/01/06 Replaced PD_Date, PD_Time with project.date, project.time.
+                   Also: tool.radius is no more.
+62458 SPD 03/11/06 Moved the XML declaration to the start of the file.
+63781 CNJ 24/11/06 Change PMillLogo with CompanyLogo
+67496 MH  24/09/07 Remove DOCTYPE because it causes a problem with IE7
+111034 MOM 13/03/14 Replaced deprecated parameters
+111249 MOM 28/03/14 Syntax adjustment for some parameters
+111727 MOM 14/04/14 Use of metatag to emulate IE9 
+112626 MOM 29/05/14 Adjust the column widths to fit with the new fixed
+                    table layout. 
+128909 CNJ 04/07/16 Change PowerMILL to PowerMill
+=============================================================================
+
+End documentation header comment -->
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9"/>
+  <title>Summary Sheet</title>
+  <link rel="stylesheet" type="text/css" href="../global/style.css" />
+</head>
+
+<body>
+  <div class="a4page">
+
+  <table>
+    <tr><td colspan="3" class="title">Toolpaths & Tools</td></tr>
+    <tr>
+      <th>Project</th><td colspan="2">${project.Name}</td>
+    </tr>
+    <tr>
+      <th>NC Program</th><td colspan="2">${ncprogram.NameTag}</td>
+    </tr>
+  </table>
+
+
+  <!-- Toolpath summary table follows. -->
+  <table>
+
+    <thead>
+      <tr>
+        <td colspan="7" class="title">Summary sheet ${SU_SheetNo} of ${SU_MaxSheets}</td>
+      </tr>
+      <tr>
+        <th colspan="5">Toolpath</th>
+        <th colspan="2">Tool</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <summaryrow>
+        <tr>
+          <td colspan="5" rowspan="4">${stoolpath.NameTag}</td>
+          <th rowspan="1">Type</th><td rowspan="1">${tool.Type}</td>
+        </tr>
+        <tr>
+          <th>Diameter</th><td>${tool.Diameter}</td>
+        </tr>
+        <tr>
+          <th>Tip radius</th><td>${tool.TipRadius}</td>
+        </tr>
+        <tr>
+          <th><b>Number</b></th><td><b>${tool.Number}</b></td>
+        </tr>
+      </summaryrow>
+    </tbody>
+
+  </table>
+
+  </div>
+</body>
+
+</html>
